@@ -24,7 +24,7 @@ class Transfer
   end
 
   def reverse_transfer
-    if @status = "complete" #self.execute_transaction #executed transfer was done
+    if self.execute_transaction && @status != "reversed" #executed transfer was done
       receiver.balance -= self.amount
       sender.deposit(self.amount)
       @status = "reversed"
